@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">pygame</span>
+<span class="s0">from </span><span class="s1">sys </span><span class="s0">import </span><span class="s1">exit</span>
+
+<span class="s1">pygame.init()</span>
+<span class="s1">screen = pygame.display.set_mode((</span><span class="s2">800</span><span class="s0">, </span><span class="s2">400</span><span class="s1">))</span>
+<span class="s1">pygame.display.set_caption(</span><span class="s3">'Rustin'</span><span class="s1">)</span>
+<span class="s1">clock = pygame.time.Clock()</span>
+<span class="s1">test_font = pygame.font.Font(</span><span class="s3">r&quot;C:\Users\Jacob\Desktop\graphics\ARCADECLASSIC.ttf&quot;</span><span class="s0">, </span><span class="s2">50</span><span class="s1">)</span>
+
+<span class="s1">sky_surface = pygame.image.load(</span><span class="s3">r'C:\Users\Jacob\Desktop\graphics\skybox1.png'</span><span class="s1">)</span>
+<span class="s1">ground_surface = pygame.image.load(</span><span class="s3">r'C:\Users\Jacob\Desktop\graphics\ground3.png'</span><span class="s1">)</span>
+<span class="s1">box_surface = pygame.image.load(</span><span class="s3">r'C:\Users\Jacob\Desktop\graphics\box.png'</span><span class="s1">).convert_alpha()</span>
+<span class="s1">tree_surface = pygame.image.load(</span><span class="s3">r'C:\Users\Jacob\Desktop\graphics\tree.png'</span><span class="s1">).convert_alpha()</span>
+<span class="s1">text_surface = test_font.render(</span><span class="s3">'GAMING'</span><span class="s0">, False, </span><span class="s3">'#00008B'</span><span class="s1">)</span>
+
+<span class="s1">box_x_pos = </span><span class="s2">100</span>
+<span class="s1">box_rect = box_surface.get_rect(midbottom = (</span><span class="s2">80</span><span class="s0">,</span><span class="s2">320</span><span class="s1">))</span>
+<span class="s1">tree_rect = tree_surface.get_rect(midbottom = (</span><span class="s2">400</span><span class="s0">, </span><span class="s2">315</span><span class="s1">))</span>
+
+<span class="s0">while True</span><span class="s1">:</span>
+    <span class="s0">for </span><span class="s1">event </span><span class="s0">in </span><span class="s1">pygame.event.get():</span>
+        <span class="s0">if </span><span class="s1">event.type == pygame.QUIT:</span>
+            <span class="s1">pygame.quit()</span>
+            <span class="s1">exit()</span>
+
+    <span class="s1">dest1 = (</span><span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">)</span>
+    <span class="s1">screen.blit(sky_surface</span><span class="s0">,</span><span class="s1">dest1)</span>
+
+    <span class="s1">dest2 = (</span><span class="s2">0</span><span class="s0">, </span><span class="s2">300</span><span class="s1">)</span>
+    <span class="s1">screen.blit(ground_surface</span><span class="s0">, </span><span class="s1">dest2)</span>
+
+    <span class="s1">dest3 = (</span><span class="s2">300</span><span class="s0">, </span><span class="s2">350</span><span class="s1">)</span>
+    <span class="s1">screen.blit(text_surface</span><span class="s0">, </span><span class="s1">dest3)</span>
+
+
+
+
+    <span class="s1">screen.blit(box_surface</span><span class="s0">, </span><span class="s1">box_rect)</span>
+
+    <span class="s1">box_rect.left += </span><span class="s2">1</span>
+
+    <span class="s1">screen.blit(tree_surface</span><span class="s0">, </span><span class="s1">tree_rect)</span>
+
+
+    <span class="s0">if </span><span class="s1">box_x_pos == </span><span class="s2">799</span><span class="s1">:</span>
+        <span class="s1">box_x_pos = </span><span class="s2">1</span>
+
+
+    <span class="s1">print(box_rect.colliderect(tree_rect))</span>
+
+
+
+    <span class="s4">#draw all our elements</span>
+    <span class="s4"># update everything</span>
+    <span class="s1">pygame.display.update()</span>
+    <span class="s1">clock.tick(</span><span class="s2">60</span><span class="s1">)</span></pre>
+</body>
+</html>
